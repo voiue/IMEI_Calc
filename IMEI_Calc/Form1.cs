@@ -49,8 +49,15 @@ namespace IMEI_Calc
         {
             if (textBoxOutput.Text != "")
             {
-                Clipboard.SetDataObject(textBoxOutput.Text);
-                //MessageBox.Show("已复制到剪贴板！");
+                try
+                {
+                    Clipboard.SetDataObject(textBoxOutput.Text);
+                    //MessageBox.Show("已复制到剪贴板！");
+                }
+                catch
+                {
+                    MessageBox.Show("剪切板被占用，复制失败！")
+                }
                 timer1.Interval = 1000;
                 timer1.Enabled = true;
             }
